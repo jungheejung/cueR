@@ -1,0 +1,19 @@
+Package: cudR
+Type: Package
+Title: Analysis Helper Scripts For Cue-expectancy Task 
+Version: 0.1
+Date: 2021-10-01
+Authors@R: person("Heejung", "Jung", email = "heejung.jung.gr@dartmouth.edu", role = c("aut", "cre"))
+Description: Most scripts are used for summary statistics and plotting the data.
+License: GPL-3
+Depends: R (>= 3.5.0)
+Imports:
+    dplyr,
+    ggplot2
+Suggests:
+    testthat,
+    knitr,
+    rmarkdown
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
