@@ -1,7 +1,7 @@
 Package: cueR
 Type: Package
 Title: Analysis Helper Scripts For Cue-expectancy Task 
-Version: 0.1
+Version: 0.0.0.9
 Date: 2021-10-01
 Authors@R: person("Heejung", "Jung", email = "heejung.jung.gr@dartmouth.edu", role = c("aut", "cre"))
 Description: Most scripts are used for summary statistics and plotting the data.
@@ -10,20 +10,12 @@ Depends: R (>= 3.5.0)
 Imports:
     car,
     psych,
-    correlation,
-    DescTools,
-    effectsize,
-    emmeans,
     GGally,
     gghalves,
     ggpubr,
-    ggrepel,
     ggtext,
-    glmmTMB,
     gridExtra,
-    ICC,
     lavaan,
-    lmerTest,
     Matrix,
     MBESS,
     devtools,
@@ -38,8 +30,6 @@ Imports:
     Rmisc,
     broom,
     broom.mixed,
-    sjPlot,
-    sjstats,
     stats,
     stringr,
     tidyr
