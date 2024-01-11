@@ -1,19 +1,26 @@
 Package: cueR
 Type: Package
 Title: Analysis Helper Scripts For Cue-expectancy Task 
-Version: 0.1
+Version: 0.0.0.9
 Date: 2021-10-01
 Authors@R: person("Heejung", "Jung", email = "heejung.jung.gr@dartmouth.edu", role = c("aut", "cre"))
 Description: Most scripts are used for summary statistics and plotting the data.
 License: GPL-3
 Depends: R (>= 3.5.0)
 Imports:
+    ggplot2,
+    plyr, 
     dplyr,
-    ggplot2
+    lme4,
+    stringr,
+    rlang,
+    tidyr,
+    ggpubr,
+    gridExtra
 Suggests:
     testthat,
     knitr,
     rmarkdown
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.1.1
+RoxygenNote: 7.2.0
