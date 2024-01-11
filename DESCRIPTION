@@ -8,8 +8,41 @@ Description: Most scripts are used for summary statistics and plotting the data.
 License: GPL-3
 Depends: R (>= 3.5.0)
 Imports:
+    car,
+    psych,
+    correlation,
+    DescTools,
+    effectsize,
+    emmeans,
+    GGally,
+    gghalves,
+    ggpubr,
+    ggrepel,
+    ggtext,
+    glmmTMB,
+    gridExtra,
+    ICC,
+    lavaan,
+    lmerTest,
+    Matrix,
+    MBESS,
+    devtools,
+    PupillometryR,
+    plyr
     dplyr,
-    ggplot2
+    ggplot2,
+    lme4
+    usethis,
+    greybox
+    smooth,
+    Rmisc,
+    broom,
+    broom.mixed,
+    sjPlot,
+    sjstats,
+    stats,
+    stringr,
+    tidyr
 Suggests:
     testthat,
     knitr,
