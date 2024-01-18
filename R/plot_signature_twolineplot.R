@@ -21,11 +21,6 @@
 #' # Assuming 'plot_keys' and 'df' are predefined and appropriate
 #' plot_signature_twolineplot(signature_key = "NPSpos", plot_keys = plot_keys, df = df)
 plot_signature_twolineplot <- function(signature_key = NULL, plot_keys = NULL, df = NULL) {
-    # Function body
-}
-
-plot_signature_twolineplot <- function(signature_key = NULL, plot_keys = NULL, df = NULL) {
-    # feed in signature keyword # signature_key = "NPSpos"
 
     groupwise <- data.frame()
     subjectwise <- data.frame()
