@@ -22,7 +22,8 @@
 #'
 #' @importFrom dplyr select rename
 #' @importFrom tidyr spread
-#' @importFrom broom fixef ranef
+#' @import broom
+#' @importFrom lme4 ranef fixef
 compute_randomeffects <- function(lmer_model, rand_savefname, taskname,
                                   new_rand_names = c("rand_intercept", "rand_cue"),
                                   new_fix_names = c("fix_intercept", "fix_cue")) {
