@@ -101,13 +101,13 @@ plot_cueexpectancy_twofactor <- function(
     guides(shape = guide_legend(override.aes = list(shape = c(16, 17)))) +
     theme(legend.position = "none")
   
-  g <- plot_largetext(g)
+  g <- ggplot_largetext(g)
   
   # Create the legend data frame
   
   
   # Use grid.arrange to put them together
-  combined_plot <- plot_prettifylegend(
+  combined_plot <- ggplot_prettifylegend(
     g,
     factor_level = legend_factor_levels,
     factor_color = legend_factor_colors,
