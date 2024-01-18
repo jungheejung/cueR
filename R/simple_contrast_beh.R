@@ -1,3 +1,20 @@
+#' Add Contrast and Ordered Categorical Columns to a Data Frame
+#'
+#' This function takes a data frame and adds several new columns to it. These new columns include
+#' contrast codes (linear and quadratic), ordered categorical variables, and factorized variables.
+#' The function is specifically tailored for a behavioral file with a fixed structure.
+#'
+#' @param df A data frame to which new columns will be added. The data frame is expected to have
+#'           specific columns like `src_subject_id`, `param_stimulus_type`, and `param_cue_type`.
+#'
+#' @return A modified data frame with added columns for contrasts and ordered categoricals.
+#'         The function also prints out a message listing the names of the new columns.
+#'
+#' @examples
+#' # Assuming `data` is your data frame with the required structure:
+#' modified_data <- simple_contrast_beh(data)
+#'
+#' @export
 simple_contrast_beh <- function(df) {
 
     # List of new columns to be added
@@ -45,17 +62,17 @@ simple_contrast_beh <- function(df) {
     )
 
     print(paste(
-        "new contrast names include:\n",
-        "\t* STIM_con_linear\n",
-        "\t* STIM_con_quad\n",
-        "\t* CUE_high_gt_low\n",
-        "Also included are ordered categoricals:\n ",
-        "\t* stim_ordered\n",
-        "\t* cue_ordered\n",
-        "The following variables are factorized:\n",
-        "\t* subject\n",
-        "\tstim-factor",
-        sep = ""
+      "New contrast names include:",
+      "\n  * STIM_con_linear",
+      "\n  * STIM_con_quad",
+      "\n  * CUE_high_gt_low",
+      "\n\nAlso included are ordered categoricals:",
+      "\n  * stim_ordered",
+      "\n  * cue_ordered",
+      "\n\nThe following variables are factorized:",
+      "\n  * subject",
+      "\n  * stim-factor",  # Assuming "stim-factor" is correct
+      sep = ""
     ))
 
     return(df)
