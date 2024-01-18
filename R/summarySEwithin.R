@@ -1,33 +1,35 @@
+#' Summarizes Data with Within-Subjects Variables
+#'
+#' This function summarizes data, especially handling within-subjects variables by removing
+#' inter-subject variability. It calculates count, un-normed mean, normed mean, standard
+#' deviation, standard error of the mean, and confidence interval. Adjusted values are calculated
+#' using the method from Morey (2008) if there are within-subject variables.
+#'
+#' @param data A data frame containing the data to be summarized.
+#' @param measurevar The name of a column that contains the variable to be summarized.
+#' @param betweenvars A vector containing names of columns that are between-subjects variables.
+#' @param withinvars A vector containing names of columns that are within-subjects variables.
+#' @param idvar The name of a column that identifies each subject (or matched subjects).
+#' @param na.rm A boolean indicating whether to ignore NA's in calculations.
+#' @param conf.interval The percent range of the confidence interval (default is 95%).
+#' @param .drop A boolean indicating whether to drop levels that do not appear in the data.
+#'
+#' @return A data frame with summarized statistics including mean, standard deviation,
+#'         standard error, and confidence interval for both normed and un-normed data.
+
+#' @examples
+#' # Assuming `data` is your data frame with the appropriate structure:
+#' result <- summarySEwithin(data, "measurevar", c("betweenVar1", "betweenVar2"),
+#'                           c("withinVar1", "withinVar2"), "idvar", TRUE, .95, TRUE)
+#' @references
+#' This code is aa direct copy of the function used in RaincloudPlots:
+#' https://github.com/RainCloudPlots/RainCloudPlots/blob/master/tutorial_R/summarySE.R
+#' This version is an Adapted code of Ryan Hope's Rmis::summarySE function:
+#' https://www.rdocumentation.org/packages/Rmisc/versions/1.5/topics/summarySE
+#' @export
 summarySEwithin <- function(data = NULL, measurevar, betweenvars = NULL, withinvars = NULL,
                             idvar = NULL, na.rm = FALSE, conf.interval = .95, .drop = TRUE) {
-#   """
-#   Summarizes data, handling within-subjects variables
-#   by removing inter-subject variability.
-#   It will still work if there are no within-S variables.
-#   Gives count, un-normed mean, normed mean (with same between-group mean),
-#   standard deviation, standard error of the mean, and confidence interval.
-#   If there are within-subject variables,
-#   calculate adjusted values using method from Morey (2008).
 
-#   Parameters
-#   ----------
-#   data:
-#       a data frame.
-#   measurevar:
-#       the name of a column that contains the variable to be summariezed
-#   betweenvars:
-#       a vector containing names of columns that are between-subjects variables
-#   withinvars:
-#       a vector containing names of columns that are within-subjects variables
-#   idvar:
-#       the name of a column that identifies each subject (or matched subjects)
-#   na.rm:
-#       a boolean that indicates whether to ignore NA's
-#   conf.interval:
-#       the percent range of the confidence interval (default is 95%)
-#       Ensure that the betweenvars and withinvars are factors
-#   """
-    library(raincloudplots)
     factorvars <- vapply(data[, c(betweenvars, withinvars), drop = FALSE],
         FUN = is.factor, FUN.VALUE = logical(1)
     )
