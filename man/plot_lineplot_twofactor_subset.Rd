@@ -13,8 +13,8 @@ plot_lineplot_twofactor_subset(
   error,
   color,
   ggtitle,
-  xlab = "Stimulus Intensity",
-  ylab = "Outcome Rating"
+  xlab = NULL,
+  ylab = NULL
 )
 }
 \arguments{

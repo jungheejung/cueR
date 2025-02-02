@@ -30,35 +30,48 @@
 #'               color = c("red", "blue"), ggtitle = "My Plot")
 #' [Example plot](TODO)
 plot_lineplot_twofactor_subset <- function(data, taskname, iv1, iv2, mean, error,
-                      color, ggtitle, xlab= "Stimulus Intensity", ylab = "Outcome Rating") {
-
-    # Check if 'taskname' column exists in 'data'
-    if ("task" %in% names(data) && !is.null(taskname)) {
-        subset <- data[which(data$task == taskname), ]
-    } else {
-        # If 'taskname' column does not exist or 'taskname' is NULL, use the entire dataframe
-        subset <- data
-    }
-
-    g <- ggplot(data = subset, aes(
-        x = .data[[iv1]],
-        y = .data[[mean]],
-        group = as.factor(.data[[iv2]]),
-        color = as.factor(.data[[iv2]])
-    ), cex.lab = 1.5, cex.axis = 2, cex.main = 1.5, cex.sub = 1.5) +
-        geom_errorbar(aes(
-            ymin = (.data[[mean]] - .data[[error]]),
-            ymax = (.data[[mean]] + .data[[error]])
-        ), width = .1) +
-        geom_line(linewidth=.5, aes(linetype = as.factor(.data[[iv2]]) )) + # change back to geom_line() +
-        geom_point() +
-        ggtitle(ggtitle) +
-        xlab(xlab) +
-        ylab(ylab) +
-        scale_color_manual(values = color) +
-        scale_linetype_manual(values = c("solid", "solid")) +
-        theme_classic() +
-        theme(legend.position = "none") +
-        theme(aspect.ratio = .6)
-    return(g)
+                                           color, ggtitle, xlab = NULL, ylab = NULL) {
+  
+  # Check if 'taskname' column exists in 'data'
+  if ("task" %in% names(data) && !is.null(taskname)) {
+    subset <- data[which(data$task == taskname), ]
+  } else {
+    # If 'taskname' column does not exist or 'taskname' is NULL, use the entire dataframe
+    subset <- data
+  }
+  
+  # Use default labels if none are provided
+  if (is.null(xlab)) xlab <- "Stimulus intensity"
+  if (is.null(ylab)) ylab <- "Outcome rating"
+  
+  g <- ggplot(data = subset, aes(
+    x = .data[[iv1]],
+    y = .data[[mean]],
+    group = as.factor(.data[[iv2]]),
+    color = as.factor(.data[[iv2]])
+  ), cex.lab = 1.5, cex.axis = 2, cex.main = 1.5, cex.sub = 1.5) +
+    geom_pointrange(aes(
+      ymin = (.data[[mean]] - .data[[error]]),
+      ymax = (.data[[mean]] + .data[[error]])
+    ), 
+    size = .4,  # Increased thickness for the error bars
+    # size = .5, 
+    width = 1  # Slightly wider horizontal caps
+    ) +
+    geom_line(linewidth=1, aes(linetype = as.factor(.data[[iv2]]) )) + # change back to geom_line() +
+    # geom_point(size = .5) +
+    ggtitle(ggtitle) +
+    xlab(xlab) +
+    ylab(ylab) +
+    scale_color_manual(values = color) +
+    scale_linetype_manual(values = c("solid", "solid")) +
+    theme_classic() +
+    
+    theme(aspect.ratio = 1 ,
+          axis.line = element_line(size = 0.2),
+          axis.ticks = element_line(size = 0.2), # Thin tick marks
+          # axis.ticks.length = unit(3, "pt"),
+          axis.ticks.length = unit(-3, "pt"),
+          legend.position = "none")
+  return(g)
 }
