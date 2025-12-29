@@ -45,7 +45,14 @@ plot_ggplot_correlation <- function(data, x, y, p_acc, r_acc,
     ) +
         geom_point() +
         theme_classic() +
-        theme(aspect.ratio = 1) +
+        # theme(aspect.ratio = 1) +
+        # 
+      theme(aspect.ratio = 1 ,
+            axis.line = element_line(size = 0.2),
+            axis.ticks = element_line(size = 0.2), # Thin tick marks
+            # axis.ticks.length = unit(3, "pt"),
+            axis.ticks.length = unit(-3, "pt"),
+            legend.position = "none") + 
         ggpubr::stat_cor(
             p.accuracy = p_acc,
             r.accuracy = r_acc,
