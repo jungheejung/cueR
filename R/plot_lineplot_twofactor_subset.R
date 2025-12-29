@@ -1,6 +1,7 @@
 #' Plot a Two-Factor Line Plot with Optional Subsetting
 #'
 #' This function creates a line plot for data with two factors. It allows for optional subsetting of the data based on a specified task name. If the 'taskname' column does not exist or 'taskname' is NULL, the function uses the entire dataset. It utilizes ggplot2 for plotting.
+#' Updated as a pointrage plot instead of error bars
 #'
 #' @param data A data frame containing the dataset to be plotted.
 #' @param taskname A string specifying the task name for subsetting the data, or NULL to use the entire dataset.
