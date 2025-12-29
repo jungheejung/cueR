@@ -1,4 +1,4 @@
-plot_lineplot_twofactor_subsetthick <- function(data, taskname, iv1, iv2, mean, error,
+plot_lineplot_twofactor_subjectwise <- function(data, taskname, iv1, iv2, mean, error,
                       color, ggtitle, xlab= "Stimulus Intensity", ylab = "Outcome Rating") {
     # iv1 = "levels_ordered"
     # iv2 = "social_ordered"
@@ -12,16 +12,10 @@ plot_lineplot_twofactor_subsetthick <- function(data, taskname, iv1, iv2, mean, 
         group = as.factor(.data[[iv2]]),
         color = as.factor(.data[[iv2]])
     ), cex.lab = 1.5, cex.axis = 2, cex.main = 1.5, cex.sub = 1.5) +
-        # geom_errorbar(aes(
-        #     ymin = (.data[[mean]] - .data[[error]]),
-        #     ymax = (.data[[mean]] + .data[[error]])
-        # ), width = .1, size=line_thickness) +
-        # 
-      geom_pointrange(aes(
-        ymin = (.data[[mean]] - .data[[error]]),
-        ymax = (.data[[mean]] + .data[[error]])
-      ),
-      size = line_thickness) +
+        geom_errorbar(aes(
+            ymin = (.data[[mean]] - .data[[error]]),
+            ymax = (.data[[mean]] + .data[[error]])
+        ), width = .1, size=line_thickness) +
         geom_line(linewidth=line_thickness, aes(linetype = as.factor(.data[[iv2]]) )) + # change back to geom_line() +
         geom_point(size=line_thickness*2) +
         # scale_x_continuous(breaks = seq(-3, +3, by = 1)) +
