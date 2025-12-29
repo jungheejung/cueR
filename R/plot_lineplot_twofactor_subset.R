@@ -55,11 +55,9 @@ plot_lineplot_twofactor_subset <- function(data, taskname, iv1, iv2, mean, error
       ymax = (.data[[mean]] + .data[[error]])
     ), 
     size = .4,  # Increased thickness for the error bars
-    # size = .5, 
     width = 1  # Slightly wider horizontal caps
     ) +
     geom_line(linewidth=1, aes(linetype = as.factor(.data[[iv2]]) )) + # change back to geom_line() +
-    # geom_point(size = .5) +
     ggtitle(ggtitle) +
     xlab(xlab) +
     ylab(ylab) +
@@ -70,7 +68,6 @@ plot_lineplot_twofactor_subset <- function(data, taskname, iv1, iv2, mean, error
     theme(aspect.ratio = 1 ,
           axis.line = element_line(size = 0.2),
           axis.ticks = element_line(size = 0.2), # Thin tick marks
-          # axis.ticks.length = unit(3, "pt"),
           axis.ticks.length = unit(-3, "pt"),
           legend.position = "none")
   return(g)
